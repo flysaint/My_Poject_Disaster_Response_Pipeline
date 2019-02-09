@@ -14,8 +14,8 @@ from sklearn.multioutput import MultiOutputClassifier
 from sklearn.pipeline import Pipeline, FeatureUnion
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
-from sklearn.grid_search import GridSearchCV
-
+#from sklearn.grid_search import GridSearchCV
+from sklearn.model_selection import GridSearchCV
 
 '''
 疑问1. GridSearchCV为什么使用demo里原始的参数，会报错。很可能是因为定义的结构不同导致
@@ -41,7 +41,7 @@ def load_data(database_filepath,table_name = 'df_clean'):
     df = pd.read_sql_table(table_name, engine)
     # 获取目标列
     targets = [col for col in df.columns if col 
-                  not in ['id', 'message', 'original', 'genre']]
+                  not in ['id', 'message', 'original', 'genre','index']]
   
     X = df['message'] 
     Y = df[targets] 
